@@ -1,0 +1,313 @@
+:root {
+  --color-light: #e1e5f2;
+  --color-primary: #a0f87f;
+  --color-purple: #2e139e;
+  --color-dark-blue: #152338;
+  --color-darkest: #0e1520;
+}
+
+.app-preview {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #152338, #0e1520);
+  font-family: "Alexandria", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-preview::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(46, 19, 158, 0.1), transparent);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .app-preview {
+    padding: 7rem 0;
+  }
+}
+
+.app-preview-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .app-preview-grid {
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+
+.app-preview-image-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 20rem;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+}
+
+@media (min-width: 1024px) {
+  .app-preview-image-wrapper {
+    max-width: 24rem;
+  }
+}
+
+.app-preview-image-container {
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  aspect-ratio: 9 / 16;
+  background: linear-gradient(135deg, #2e139e, #152338);
+  border: 1px solid rgba(160, 248, 127, 0.08);
+}
+
+.app-preview-placeholder {
+  border-radius: 1.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.app-preview-icon {
+  font-size: 4rem;
+}
+
+.app-preview-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #a0f87f;
+  font-family: "Alexandria", sans-serif;
+}
+
+.app-preview-content {
+  flex: 1;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+}
+
+@media (min-width: 1024px) {
+  .app-preview-content {
+    text-align: left;
+  }
+}
+
+.app-preview-title {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #e1e5f2;
+  margin-bottom: 1rem;
+  font-family: "Alexandria", sans-serif;
+}
+
+@media (min-width: 640px) {
+  .app-preview-title {
+    font-size: 2.25rem;
+  }
+}
+
+.app-preview-description {
+  font-size: 1.125rem;
+  color: rgba(225, 229, 242, 0.6);
+  margin-bottom: 2rem;
+  line-height: 1.625;
+  font-family: "Alexandria", sans-serif;
+  font-weight: 300;
+  
+}
+
+.app-preview-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  align-items: flex-start;
+}
+
+
+
+.app-preview-check {
+  flex-shrink: 0;
+  color: #a0f87f;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.app-preview-feature-text {
+  font-weight: 400;
+  color: rgba(225, 229, 242, 0.8);
+  font-family: "Alexandria", sans-serif;
+}
+
+.app-preview-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 28rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+
+
+.app-preview-input {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(225, 229, 242, 0.05);
+  border: 1px solid rgba(225, 229, 242, 0.1);
+  color: #e1e5f2;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: "Alexandria", sans-serif;
+}
+
+.app-preview-input::placeholder {
+  color: rgba(225, 229, 242, 0.3);
+}
+
+.app-preview-input:focus {
+  border-color: #a0f87f;
+  box-shadow: 0 0 20px rgba(160, 248, 127, 0.05);
+}
+
+.app-preview-btn {
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #0e1520;
+  background: #a0f87f;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  font-family: "Alexandria", sans-serif;
+  box-shadow: 0 0 20px rgba(160, 248, 127, 0.1);
+}
+
+.app-preview-btn:hover {
+  background: #8ae06a;
+  transform: scale(1.02);
+  box-shadow: 0 0 30px rgba(160, 248, 127, 0.2);
+}
+/* ---------- QR Codes Section ---------- */
+.app-preview-qr-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* English: align content to the RIGHT */
+.app-preview-qr-section.qr-ltr {
+  align-items: center;
+  text-align: right;
+}
+
+/* Arabic: align content to the LEFT */
+.app-preview-qr-section.qr-rtl {
+  align-items: center;
+  text-align: left;
+}
+
+.app-preview-qr-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffff;
+  margin-bottom: 1.25rem;
+}
+
+.app-preview-qr-codes {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* In RTL, visually reverse the order so Google Play is on the left too */
+.app-preview-qr-section.qr-rtl .app-preview-qr-codes {
+  flex-direction: row-reverse;
+}
+
+.app-preview-qr-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.app-preview-qr-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Bigger QR images */
+.app-preview-qr-image {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: #fff;
+  padding: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.app-preview-qr-label {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* ---------- Responsive (Mobile) ---------- */
+@media (max-width: 768px) {
+  .app-preview-qr-section,
+  .app-preview-qr-section.qr-ltr,
+  .app-preview-qr-section.qr-rtl {
+    align-items: center;
+    text-align: center;
+  }
+
+  .app-preview-qr-section.qr-rtl .app-preview-qr-codes {
+    flex-direction: row;
+  }
+
+  .app-preview-qr-codes {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .app-preview-qr-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 400px) {
+  .app-preview-qr-image {
+    width: 120px;
+    height: 120px;
+  }
+}

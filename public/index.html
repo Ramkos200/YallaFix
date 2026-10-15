@@ -1,43 +1,116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="same-origin" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YallaFix — Your Phone, Fixed. At Your Doorstep.</title>
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="On-demand mobile phone repair in under 60 minutes. Certified technicians come to you. No shop visits, no hassle."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <link rel="canonical" href="https://yallafixsy.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #airo-boot-spinner {
+        position: fixed;
+        inset: 0;
+        z-index: 9998;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: #0e1520;
+        color: #e1e5f2;
+        font-family:
+          "Alexandria",
+          -apple-system,
+          sans-serif;
+        opacity: 0;
+        pointer-events: none;
+        animation: airo-boot-fade 0.2s ease 1s forwards;
+      }
+      #app:not(:empty) ~ #airo-boot-spinner {
+        display: none;
+      }
+      .airo-boot-ring {
+        width: 36px;
+        height: 36px;
+        border: 3px solid rgba(161, 248, 127, 0.2);
+        border-top-color: #a0f87f;
+        border-radius: 50%;
+        animation: airo-boot-spin 0.9s linear infinite;
+      }
+      .airo-boot-text,
+      .airo-boot-slow-text {
+        margin: 0;
+        font-size: 14px;
+      }
+      .airo-boot-slow-text {
+        display: none;
+      }
+      #airo-boot-spinner.airo-boot-slow .airo-boot-slow-text {
+        display: block;
+      }
+      @keyframes airo-boot-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes airo-boot-fade {
+        to {
+          opacity: 1;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .airo-boot-ring {
+          animation-duration: 2.4s;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  <body class="fs-unmask-airo-app-builder">
+    <div id="app" class="fs-unmask-airo-app-builder"></div>
+    <div id="airo-boot-spinner" role="status" aria-live="polite">
+      <div class="airo-boot-ring" aria-hidden="true"></div>
+      <p class="airo-boot-text">Loading…</p>
+      <p class="airo-boot-slow-text">
+        Still working — the first load can take a little longer.
+      </p>
+    </div>
+    <script>
+      (function () {
+        var spinner = document.getElementById("airo-boot-spinner");
+        if (!spinner) return;
+        var appEl = document.getElementById("app");
+        if (!appEl) {
+          spinner.remove();
+          return;
+        }
+        if (appEl.firstElementChild) {
+          spinner.remove();
+          return;
+        }
+        var observer = new MutationObserver(function () {
+          if (appEl.firstElementChild) {
+            observer.disconnect();
+            spinner.remove();
+          }
+        });
+        observer.observe(appEl, { childList: true });
+        setTimeout(function () {
+          spinner.classList.add("airo-boot-slow");
+        }, 20000);
+        setTimeout(function () {
+          observer.disconnect();
+          spinner.remove();
+        }, 90000);
+      })();
+    </script>
   </body>
 </html>

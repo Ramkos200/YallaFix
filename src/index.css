@@ -1,13 +1,108 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-light: #e1e5f2;
+  --color-primary: #a0f87f;
+  --color-purple: #2e139e;
+  --color-dark-blue: #152338;
+  --color-darkest: #0e1520;
+}
+
+body {
+  font-family: 'Alexandria', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--color-darkest);
+  color: var(--color-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
 }
+
+/* RTL Support */
+body.rtl {
+  direction: rtl;
+}
+
+body.rtl .hero-content {
+  text-align: right;
+}
+
+body.rtl .hero-description {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+body.rtl .hero-buttons {
+  justify-content: flex-end;
+}
+
+body.rtl .step-card {
+  text-align: right;
+}
+
+body.rtl .feature-card {
+  text-align: right;
+}
+
+body.rtl .app-preview-content {
+  text-align: right;
+}
+
+body.rtl .app-preview-features {
+  text-align: right;
+}
+
+body.rtl .app-preview-feature {
+  flex-direction: row-reverse;
+}
+
+body.rtl .footer-grid {
+  text-align: right;
+}
+
+body.rtl .footer-links,
+body.rtl .footer-social {
+  align-items: flex-end;
+}
+
+body.rtl .nav-menu ul {
+  padding-right: 0;
+}
+
+body.rtl .btn-secondary-hero {
+  transform: scaleX(-1);
+}
+
+/* Fix for RTL spacing */
+body.rtl .hero-badge-bottom {
+  flex-direction: row-reverse;
+}
+
+body.rtl .app-preview-form {
+  flex-direction: row-reverse;
+}
+
+@media (min-width: 640px) {
+  body.rtl .app-preview-form {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Alexandria Font Weight Classes */
+.font-thin { font-weight: 100; }
+.font-extralight { font-weight: 200; }
+.font-light { font-weight: 300; }
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+.font-black { font-weight: 900; }
