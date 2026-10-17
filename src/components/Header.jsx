@@ -37,10 +37,12 @@ function Header() {
       />
      </a>
 
+     {/* --- DESKTOP NAVIGATION --- */}
      <nav className="desktop-nav" aria-label="Main navigation">
       <a href={`/${currentLang}#how-it-works`} className="nav-link">{t.howItWorks}</a>
       <a href={`/${currentLang}#why-yallafix`} className="nav-link">{t.whyYallaFix}</a>
       <a href={`/${currentLang}#contact`} className="nav-link">{t.contact}</a>
+
       <button
        className="lang-btn"
        onClick={handleLanguageToggle}
@@ -53,9 +55,11 @@ function Header() {
        </svg>
        <span>{langData.toggleLabel}</span>
       </button>
+
       <a href={`/${currentLang}#app-preview`} className="btn-primary-nav">{t.getEarlyAccess}</a>
      </nav>
 
+     {/* --- HAMBURGER MENU BUTTON --- */}
      <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Open menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
        <line x1="4" x2="20" y1="12" y2="12" />
@@ -65,10 +69,29 @@ function Header() {
      </button>
     </div>
 
+    {/* --- MOBILE NAVIGATION --- */}
     <div className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
      <a href={`/${currentLang}#how-it-works`} className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>{t.howItWorks}</a>
      <a href={`/${currentLang}#why-yallafix`} className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>{t.whyYallaFix}</a>
      <a href={`/${currentLang}#contact`} className="mobile-nav-link" onClick={() => setIsMenuOpen(false)}>{t.contact}</a>
+
+     {/* ✅ Added Language Toggle for Mobile */}
+     <button
+      className="lang-btn mobile-lang-btn"
+      onClick={() => {
+       handleLanguageToggle();
+       setIsMenuOpen(false); // Optional: closes menu after selection
+      }}
+      style={{ padding: '0.5rem 0', marginTop: '0.5rem', justifyContent: 'flex-start' }}
+     >
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
+       <circle cx="12" cy="12" r="10" />
+       <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+       <path d="M2 12h20" />
+      </svg>
+      <span>{langData.toggleLabel}</span>
+     </button>
+
      <a href={`/${currentLang}#app-preview`} className="mobile-nav-btn" onClick={() => setIsMenuOpen(false)}>{t.getEarlyAccess}</a>
     </div>
    </div>
